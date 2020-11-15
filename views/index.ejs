@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+  <form action="/users/search" method="GET">
+    <input type="text" id="name" name="name" placeholder="name">
+    <input type="text" id="age" name="age" placeholder="age">
+    <input type="submit" id="submit">
+  
+    <div class="users">
+      <table>
+          <thead>
+            <tr>
+                  <th> ID </th>
+                  <th> Name </th>
+                  <th> Email </th>
+                  <th> Age </th>
+            </tr>	
+          </thead>
+          <tbody>
+            <% for(let i = 0; i < users.length; i++) { %>
+              <%if(users[i].length > 0)%>
+                <%{%>
+                  <tr>
+                    <td><%= users[i].id %></td>
+                    <td><%= users[i].name %></td>
+                    <td><%= users[i].email %></td>
+                    <td><%= users[i].age %></td>
+                    <td><a href="/users/<%= users[i].id %>">View</a></td>
+                  </tr>
+                <%}%>
+            <%}%>
+          </tbody>
+      </table>	
+    </div>
+    <a href="/users/create">Create new user</a>
+  </form>
+</body>
+</html>
